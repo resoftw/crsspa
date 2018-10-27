@@ -11,6 +11,9 @@ export const routes = [
     },
     {
         path:'/login',
+        meta:{
+            layout:'blank'
+        },
         component:Login,
     }
 ];

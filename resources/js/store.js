@@ -148,7 +148,7 @@ export default {
             context.dispatch('initMenu');
         },
         initMenu(context){
-            context.commit('updateMenu', context.state.mainmenux);
+            context.commit('updateMenu', context.state.mainmenu);
             return;
             axios.get('/api/mainmenu',{
                 'p':context.state.currentUser?context.state.currentUser.id:null

@@ -23,6 +23,7 @@ const router=new VueRouter({
 
 Vue.component('main-menu',require('./components/MainMenu.vue'));
 Vue.component('default-layout',require('./layouts/Default.vue'));
+Vue.component('blank-layout',require('./layouts/Blank.vue'));
 
 initialize(store, router);
 
