@@ -66411,7 +66411,21 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
         isLoggedIn: !!user,
         loading: false,
         auth_error: null,
-        mainmenu: [],
+        mainmenu: [{
+            text: 'Home',
+            icon: 'home',
+            url: '/'
+        }, {
+            text: 'Dashboard',
+            icon: 'dashboard',
+            url: '/dashboard'
+        }, {
+            text: 'Information',
+            icon: 'live_help',
+            'icon-alt': 'keyboard_arrow_down',
+            model: 'true',
+            children: [{ text: 'Cara Pengaduan', url: '/help/cara' }, { text: 'Event Promotion', url: '/event' }, { text: 'Products & Packages', url: '#' }, { text: 'List Distrubution', url: '#', icon: 'report' }]
+        }],
         mainmenux: [{
             icon: 'contacts',
             text: 'Contacts'
@@ -66512,6 +66526,8 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
             context.dispatch('initMenu');
         },
         initMenu: function initMenu(context) {
+            context.commit('updateMenu', context.state.mainmenux);
+            return;
             axios.get('/api/mainmenu', {
                 'p': context.state.currentUser ? context.state.currentUser.id : null
             }).then(function (r) {

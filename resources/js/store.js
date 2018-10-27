@@ -8,7 +8,30 @@ export default {
         isLoggedIn: !!user,
         loading:false,
         auth_error:null,
-        mainmenu:[],
+        mainmenu:[
+            {
+                text:'Home',
+                icon:'home',
+                url:'/',
+            },
+            {
+                text:'Dashboard',
+                icon:'dashboard',
+                url:'/dashboard',
+            },
+            {
+                text:'Information',
+                icon:'live_help',
+                'icon-alt':'keyboard_arrow_down',
+                model:'true',
+                children:[
+                    {text:'Cara Pengaduan',url:'/help/cara'},
+                    {text:'Event Promotion',url:'/event'},
+                    {text:'Products & Packages',url:'#'},
+                    {text:'List Distrubution',url:'#',icon:'report'},
+                ],
+            },
+        ],
         mainmenux: [{
                 icon: 'contacts',
                 text: 'Contacts'
@@ -125,6 +148,8 @@ export default {
             context.dispatch('initMenu');
         },
         initMenu(context){
+            context.commit('updateMenu', context.state.mainmenux);
+            return;
             axios.get('/api/mainmenu',{
                 'p':context.state.currentUser?context.state.currentUser.id:null
             })
