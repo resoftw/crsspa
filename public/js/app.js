@@ -66838,6 +66838,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'main-app',
@@ -66887,8 +66890,16 @@ var render = function() {
         {
           attrs: {
             clipped: _vm.$vuetify.breakpoint.lgAndUp,
+            dark: _vm.$vuetify.dark,
+            "mini-variant": _vm.mini,
+            width: "260",
             fixed: "",
             app: ""
+          },
+          on: {
+            "update:miniVariant": function($event) {
+              _vm.mini = $event
+            }
           },
           model: {
             value: _vm.drawer,

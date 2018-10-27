@@ -3,6 +3,9 @@
     <v-navigation-drawer
     :clipped="$vuetify.breakpoint.lgAndUp"
     v-model="drawer"
+    :dark="$vuetify.dark"
+    :mini-variant.sync="mini"
+    width="260"
     fixed
     app
     >
