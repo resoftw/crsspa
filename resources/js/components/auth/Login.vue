@@ -10,7 +10,7 @@
                         <h1 class="flex my-4 primary--text">Customer Relationship System</h1>
                         </div>                
                         <v-form>
-                        <v-text-field append-icon="person" name="login" label="Login" type="text" v-model="form.username"></v-text-field>
+                        <v-text-field append-icon="person" name="email" label="Login" type="text" v-model="form.email"></v-text-field>
                         <v-text-field append-icon="lock" name="password" label="Password" id="password" type="password" v-model="form.password"></v-text-field>
                         </v-form>
                     </v-card-text>
