@@ -3,17 +3,12 @@
     id="appDrawer"
     :mini-variant.sync="mini"
     fixed
+    clipped
     :dark="$vuetify.dark"
     app
     v-model="drawer"
     width="260"
     >
-    <v-toolbar color="primary darken-1" dark>
-      <img v-bind:src="computeLogo" height="36" alt="Vue Material Admin Template">
-      <v-toolbar-title class="ml-0 pl-3">
-        <span class="hidden-sm-and-down">Vue Material</span>
-      </v-toolbar-title>        
-    </v-toolbar>
     <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
       <v-list dense expand>
         <template v-for="(item, i) in menus">
@@ -72,7 +67,7 @@
   </v-navigation-drawer>
 </template>
 <script>
-import menu from '@/api/menu';
+//import menu from '@/api/menu';
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
 export default {
   name: 'app-drawer',
@@ -88,7 +83,7 @@ export default {
   data: () => ({
     mini: false,
     drawer: true,
-    menus: menu,
+    //menus: menu,
     scrollSettings: {
       maxScrollbarLength: 160
     }    
@@ -97,8 +92,8 @@ export default {
     computeGroupActive () {
       return true;
     },
-    computeLogo () {
-      return '/static/m.png';
+    menus(){
+      return this.$store.getters.mainMenu;
     },
 
     sideToolbarColor () {
@@ -127,13 +122,13 @@ export default {
 </script>
 
 
-<style lang="stylus">
-// @import '../../node_modules/vuetify/src/stylus/settings/_elevations.styl';
-
-#appDrawer
-  overflow: hidden
-  .drawer-menu--scroll
-    height: calc(100vh - 48px)
-    overflow: auto
+<style >
+#appDrawer{
+  overflow: hidden;
+}
+.drawer-menu--scroll {
+    height: calc(100vh - 48px);
+    overflow: auto;
+}
 
 </style>

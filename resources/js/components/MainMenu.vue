@@ -21,7 +21,7 @@
         v-model="item.model"
         :key="item.text"
         :prepend-icon="item.model ? item.icon : item['icon-alt']"
-        append-icon=""
+        append-icon="item['icom-alt']"
     >
         <v-list-tile slot="activator">
         <v-list-tile-content>

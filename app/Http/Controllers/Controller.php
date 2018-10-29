@@ -19,6 +19,8 @@ class Controller extends BaseController
             ["text" => "Dashbard", "icon" => "dashboard", "url" => "/dashboard"],
             [
                 "text" => "Information", "icon" => "live_help",
+                "icon-alt"=>"keyboard_arrow_down",
+                "model"=>true,
                 "children" => [
                     ["text" => "Cara Pengaduan", "url" => "/help/cara"],
                     ["text" => "Event Promotion", "url" => "#"],

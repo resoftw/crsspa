@@ -10,44 +10,85 @@ export default {
         auth_error:null,
         mainmenu:[
             {
-                text:'Home',
-                icon:'home',
-                url:'/',
+                header:'Home',
             },
             {
-                text:'Dashboard',
+                title:'Dashboard',
+                group:'apps',
                 icon:'dashboard',
-                url:'/dashboard',
+                name:'Home',
             },
             {
-                text:'Information',
+                title:'Information',
                 icon:'live_help',
+                group:'information',
                 'icon-alt':'keyboard_arrow_down',
                 model:'true',
-                children:[
-                    {text:'Cara Pengaduan',url:'/help/cara'},
-                    {text:'Event Promotion',url:'/event'},
-                    {text:'Products & Packages',url:'#'},
-                    {text:'List Distrubution',url:'#',icon:'report'},
+                items:[
+                    {title:'Cara Pengaduan',name:'CaraPengaduan'},
+                    {title:'Event Promotion',name:'EventPromotion'},
+                    {title:'Products & Packages',name:'ProductsPackages'},
+                    {title:'List Distrubution',name:'ListDistributor'},
                 ],
             },
+            {
+                title:'Issues',
+                icon:'report',
+                group:'issues',
+                items:[
+                    {title:'Progress',name:'Progress'},
+                    {title:'Kritik dan Saran',name:'KritikSaran'},
+                    {title:'Reporting',name:'Reporting'},
+                ],
+            },
+            {
+                header:'E-Ticketing'
+            },
+            {
+                title:'Nomor Tiket',
+                icon:'style',
+                name:'NomorTicket',
+            },
+            {
+                divider:'true',
+            },
+            {
+                title:'Questioner',
+                icon:'star',
+                name:'Questioner',
+            },
+            {
+                divider:true,
+            },
+            {
+                title:'Settings',
+                icon:'settings',
+                items:[
+                    {title:'Products'},
+                    {title:'Events & Promotions'},
+                    {title:'Distributors'},
+                    {title:'Templates'},
+                    {title:'Users',},
+                    {title:'Reports'}
+                ]
+            }
         ],
         mainmenux: [{
                 icon: 'contacts',
-                text: 'Contacts'
+                title: 'Contacts'
             },
             {
                 icon: 'history',
-                text: 'Frequently contacted'
+                title: 'Frequently contacted'
             },
             {
                 icon: 'content_copy',
-                text: 'Duplicates'
+                title: 'Duplicates'
             },
             {
                 icon: 'keyboard_arrow_up',
                 'icon-alt': 'keyboard_arrow_down',
-                text: 'Labels',
+                title: 'Labels',
                 model: true,
                 children: [{
                     icon: 'add',
@@ -145,15 +186,15 @@ export default {
     actions: {
         login(context){
             context.commit("login");
-            context.dispatch('initMenu');
+            //context.dispatch('initMenu');
         },
         initMenu(context){
             //context.commit('updateMenu', context.state.mainmenu);
             //return;
-            axios.get('/api/mainmenu')
-            .then (r=>{
-                context.commit('updateMenu',r.data.menu);
-            });
+            //axios.get('/api/mainmenu')
+            //.then (r=>{
+                //context.commit('updateMenu',r.data.menu);
+            //});
         },
     },
 }

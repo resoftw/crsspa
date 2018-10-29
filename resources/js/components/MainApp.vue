@@ -1,5 +1,6 @@
 <template>
 <v-app id='keep'>
+    <AppDrawer></AppDrawer>
     <v-navigation-drawer
     :clipped="$vuetify.breakpoint.lgAndUp"
     v-model="drawer"
@@ -165,6 +166,7 @@
 </style>
 
 <script>
+import AppDrawer from "./AppDrawer.vue";
     export default {
         name:'main-app',
         data: () => ({
@@ -181,6 +183,9 @@
         },
         created(){
             window.getApp=this;
+        },
+        components:{
+            AppDrawer,
         },
         methods:{
             login(){
