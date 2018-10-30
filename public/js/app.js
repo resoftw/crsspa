@@ -68928,6 +68928,45 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NotificationList__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NotificationList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NotificationList__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_utils_js__ = __webpack_require__(91);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68944,8 +68983,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'app-toolbar',
+    components: {
+        NotificationList: __WEBPACK_IMPORTED_MODULE_0__NotificationList___default.a
+    },
+    data: function data() {
+        return {
+            items: [{
+                icon: 'account_circle',
+                href: '#',
+                title: 'Profile',
+                click: function click(e) {
+                    console.log(e);
+                }
+            }, {
+                icon: 'settings',
+                href: '#',
+                title: 'Settings',
+                click: function click(e) {
+                    console.log(e);
+                }
+            }, {
+                icon: 'fullscreen_exit',
+                href: '#',
+                title: 'Logout',
+                click: function click(e) {
+                    window.getApp.$emit('APP_LOGOUT');
+                }
+            }]
+
+        };
+    },
     computed: {
         toolbarColor: function toolbarColor() {
             return this.$vuetify.options.extra.mainNav;
@@ -68956,7 +69027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             window.getApp.$emit('APP_DRAWER_TOGGLED');
         },
         handleFullScreen: function handleFullScreen() {
-            Util.toggleFullScreen();
+            __WEBPACK_IMPORTED_MODULE_1__helpers_utils_js__["a" /* default */].toggleFullScreen();
         }
     }
 
@@ -69013,7 +69084,150 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("v-spacer")
+      _c("v-spacer"),
+      _vm._v(" "),
+      _c("v-btn", { attrs: { href: "mailto:wangqiangshen@gmail.com" } }, [
+        _vm._v("\n    Hire Me\n")
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        {
+          attrs: {
+            icon: "",
+            href: "https://github.com/tookit/vue-material-admin"
+          }
+        },
+        [_c("v-icon", [_vm._v("fa fa-github")])],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-btn",
+        {
+          attrs: { icon: "" },
+          on: {
+            click: function($event) {
+              _vm.handleFullScreen()
+            }
+          }
+        },
+        [_c("v-icon", [_vm._v("fullscreen")])],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-menu",
+        {
+          staticClass: "elelvation-1",
+          attrs: {
+            "offset-y": "",
+            origin: "center center",
+            "nudge-bottom": 14,
+            transition: "scale-transition"
+          }
+        },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { slot: "activator", icon: "", flat: "" },
+              slot: "activator"
+            },
+            [
+              _c(
+                "v-badge",
+                { attrs: { color: "red", overlap: "" } },
+                [
+                  _c("span", { attrs: { slot: "badge" }, slot: "badge" }, [
+                    _vm._v("3")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-icon", { attrs: { medium: "" } }, [
+                    _vm._v("notifications")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("notification-list")
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-menu",
+        {
+          attrs: {
+            "offset-y": "",
+            origin: "center center",
+            "nudge-bottom": 10,
+            transition: "scale-transition"
+          }
+        },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { slot: "activator", icon: "", large: "", flat: "" },
+              slot: "activator"
+            },
+            [
+              _c("v-avatar", { attrs: { size: "30px" } }, [
+                _c("img", {
+                  attrs: {
+                    src: __webpack_require__(55),
+                    alt: "User"
+                  }
+                })
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-list",
+            { staticClass: "pa-0" },
+            _vm._l(_vm.items, function(item, index) {
+              return _c(
+                "v-list-tile",
+                {
+                  key: index,
+                  attrs: {
+                    to: !item.href ? { name: item.name } : null,
+                    href: item.href,
+                    ripple: "ripple",
+                    disabled: item.disabled,
+                    target: item.target,
+                    rel: "noopener"
+                  },
+                  on: { click: item.click }
+                },
+                [
+                  item.icon
+                    ? _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v(_vm._s(item.title))])],
+                    1
+                  )
+                ],
+                1
+              )
+            })
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -69029,10 +69243,320 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/NotificationList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14689614", Component.options)
+  } else {
+    hotAPI.reload("data-v-14689614", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+//import notes from '@/api/notification';
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            //    items: notes
+            items: []
+        };
+    },
+    created: function created() {
+        this.items = [{
+            title: 'New user registered',
+            color: 'light-green',
+            icon: 'account_circle',
+            timeLabel: 'Just now'
+        }, { divider: true, inset: true }, {
+            title: 'New order received',
+            color: 'light-blue',
+            icon: 'shopping_cart',
+            timeLabel: '2 min ago'
+        }, { divider: true, inset: true }, {
+            title: 'New payment made',
+            color: 'cyan',
+            icon: 'payment',
+            timeLabel: '24 min ago'
+        }, { divider: true, inset: true }, {
+            title: 'New message from Michael',
+            color: 'red',
+            icon: 'email',
+            timeLabel: '1 hour ago'
+        }];
+    },
+
+    methods: {
+        handleClick: function handleClick(e) {
+            console.log(e);
+        }
+    }
+
+});
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    { staticClass: "elevation-0" },
+    [
+      _c(
+        "v-toolbar",
+        { attrs: { card: "", dense: "", color: "transparent" } },
+        [_c("v-toolbar-title", [_c("h4", [_vm._v("Notification")])])],
+        1
+      ),
+      _vm._v(" "),
+      _c("v-divider"),
+      _vm._v(" "),
+      _c(
+        "v-card-text",
+        { staticClass: "pa-0" },
+        [
+          _c(
+            "v-list",
+            { staticClass: "pa-0", attrs: { "two-line": "" } },
+            [
+              _vm._l(_vm.items, function(item, index) {
+                return [
+                  item.header
+                    ? _c("v-subheader", { key: item.header }, [
+                        _vm._v(_vm._s(item.header))
+                      ])
+                    : item.divider
+                      ? _c("v-divider", { key: index })
+                      : _c(
+                          "v-list-tile",
+                          {
+                            key: item.title,
+                            attrs: { avatar: "" },
+                            on: { click: _vm.handleClick }
+                          },
+                          [
+                            _c(
+                              "v-list-tile-avatar",
+                              { attrs: { color: item.color } },
+                              [
+                                _c("v-icon", { attrs: { dark: "" } }, [
+                                  _vm._v(_vm._s(item.icon))
+                                ])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [
+                                _c("v-list-tile-sub-title", {
+                                  domProps: { innerHTML: _vm._s(item.title) }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-action",
+                              { staticClass: "caption" },
+                              [
+                                _vm._v(
+                                  "\n            " +
+                                    _vm._s(item.timeLabel) +
+                                    "\n          "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                ]
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c("v-btn", { staticClass: "ma-0", attrs: { block: "", flat: "" } }, [
+            _vm._v("All")
+          ]),
+          _vm._v(" "),
+          _c("v-divider")
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14689614", module.exports)
+  }
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// export function camel (str) {
+//   const camel = (str || '').replace(/-([^-])/g, g => g[1].toUpperCase());
+
+//   return capitalize(camel);
+// }
+
+// export function camelActual (str) {
+//   return (str || '').replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ''));
+// }
+
+// export function kebab (str) {
+//   return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+// }
+
+// export function capitalize (str) {
+//   str = str || '';
+
+//   return `${str.substr(0, 1).toUpperCase()}${str.slice(1)}`;
+// }
+
+// export function findProduct (store, id) {
+//   return store.state.store.products.find(p => p.id === id);
+// }
+
+// export function isOnSale (variants) {
+//   return variants.some(variant => {
+//     return parseFloat(variant.price) < parseFloat(variant.compareAtPrice);
+//   });
+// }
+
+// export function randomNumber (min, max) {
+//   return Math.floor(Math.random() * max) + min;
+// }
+
+// export function randomString (length = 5) {
+//   let text = '';
+//   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+//   for (let i = 0; i < length; i++) {
+//     text += possible.charAt(Math.floor(Math.random() * possible.length));
+//   }
+
+//   return text;
+// }
+var randomElement = function randomElement() {
+    var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+    return arr[Math.floor(Math.random() * arr.length)];
+};
+
+var kebab = function kebab(str) {
+    return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+};
+
+var toggleFullScreen = function toggleFullScreen() {
+    var doc = window.document;
+    var docEl = doc.documentElement;
+
+    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+    if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+        requestFullScreen.call(docEl);
+    } else {
+        cancelFullScreen.call(doc);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    randomElement: randomElement,
+    toggleFullScreen: toggleFullScreen,
+    kebab: kebab
+});
+
+/***/ }),
 /* 92 */
 /***/ (function(module, exports) {
 
