@@ -1,5 +1,4 @@
 import { getLocalUser } from "./helpers/auth";
-
 const user=getLocalUser();
 
 export default {
@@ -63,79 +62,16 @@ export default {
             {
                 title:'Settings',
                 icon:'settings',
+                group:'Settings',
                 items:[
-                    {title:'Products'},
+                    {title:'Questioner',name:'Questionnaire'},
+                    {title:'Products',name:'Products'},
                     {title:'Events & Promotions'},
                     {title:'Distributors'},
                     {title:'Templates'},
                     {title:'Users',},
                     {title:'Reports'}
                 ]
-            }
-        ],
-        mainmenux: [{
-                icon: 'contacts',
-                title: 'Contacts'
-            },
-            {
-                icon: 'history',
-                title: 'Frequently contacted'
-            },
-            {
-                icon: 'content_copy',
-                title: 'Duplicates'
-            },
-            {
-                icon: 'keyboard_arrow_up',
-                'icon-alt': 'keyboard_arrow_down',
-                title: 'Labels',
-                model: true,
-                children: [{
-                    icon: 'add',
-                    text: 'Create label'
-                }]
-            },
-            {
-                icon: 'keyboard_arrow_up',
-                'icon-alt': 'keyboard_arrow_down',
-                text: 'More',
-                model: false,
-                children: [{
-                        text: 'Import'
-                    },
-                    {
-                        text: 'Export'
-                    },
-                    {
-                        text: 'Print'
-                    },
-                    {
-                        text: 'Undo changes'
-                    },
-                    {
-                        text: 'Other contacts'
-                    }
-                ]
-            },
-            {
-                icon: 'settings',
-                text: 'Settings'
-            },
-            {
-                icon: 'chat_bubble',
-                text: 'Send feedback'
-            },
-            {
-                icon: 'help',
-                text: 'Help'
-            },
-            {
-                icon: 'phonelink',
-                text: 'App downloads'
-            },
-            {
-                icon: 'keyboard',
-                text: 'Go to the old version'
             }
         ],
 

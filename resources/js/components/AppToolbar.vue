@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar :color="toolbarColor" app dark absolute clipped-left>
+    <v-toolbar :color="toolbarColor" app dark fixed clipped-left>
     <img src="../../images/logo 64.png" height="36" alt="CRS">
     <span class="title ml-3 mr-5">C R S &nbsp;<span class="font-weight-light">PTSB</span></span>
     <v-toolbar-side-icon @click.native="handleDrawerToggle"></v-toolbar-side-icon>
@@ -11,16 +11,10 @@
         prepend-inner-icon="search"
     ></v-text-field>
     <v-spacer></v-spacer>
-    <v-btn href="mailto:wangqiangshen@gmail.com">
-        Hire Me
-    </v-btn>      
-    <v-btn icon href="https://github.com/tookit/vue-material-admin">
-        <v-icon>fa fa-github</v-icon>
-    </v-btn>
     <v-btn icon @click="handleFullScreen()">
         <v-icon>fullscreen</v-icon>
     </v-btn>
-    <v-menu offset-y origin="center center" class="elelvation-1" :nudge-bottom="14" transition="scale-transition">
+    <v-menu offset-y origin="center center" class="elelvation-1" :nudge-bottom="14" transition="slide-y-transition">
         <v-btn icon flat slot="activator">
         <v-badge color="red" overlap>
         <span slot="badge">3</span>
@@ -80,7 +74,8 @@ export default {
                 href: '#',
                 title: 'Logout',
                 click: (e) => {
-                    window.getApp.$emit('APP_LOGOUT');
+                    window.getApp.$store.commit('logout');
+                    window.getApp.$router.push('/login');
                 }
             }
         ],
@@ -97,7 +92,7 @@ export default {
         },
         handleFullScreen () {
         Util.toggleFullScreen();
-        }
+        },
     }
 
 }

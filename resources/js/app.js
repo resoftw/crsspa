@@ -5,7 +5,7 @@ import Vuex from "vuex";
 import Vuetify from 'vuetify';
 import {routes} from './routes';
 import StoreData from './store';
-import colors from 'vuetify/es5/util/colors';
+//import colors from 'vuetify/es5/util/colors';
 import {initialize} from './helpers/general';
 
 import MainApp from './components/MainApp.vue';

@@ -4,6 +4,7 @@
     fixed
     dark
     app
+    absolute
     >
     <v-toolbar-title class="ml-0 pl-3">
       <v-toolbar-side-icon @click.stop="handleDrawerToggle"></v-toolbar-side-icon>
