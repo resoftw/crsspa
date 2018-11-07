@@ -3,6 +3,7 @@ import Login from './components/auth/Login.vue';
 import QuestMain from './components/quest/Main.vue';
 import QuestAdmin from './components/quest/Admin.vue';
 import QuestAdminCreate from './components/quest/AdminCreate.vue';
+import UsersMain from './components/users/Main.vue';
 export const routes = [
     {
         path:'/',
@@ -53,4 +54,12 @@ export const routes = [
             requiresAuth: true,
         }
     },
+    {
+        path:'/Settings/Users',
+        name:'Settings/Users',
+        component:UsersMain,
+        meta:{
+            requiresAuth:true,
+        }
+    }
 ];

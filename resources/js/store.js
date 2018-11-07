@@ -1,4 +1,5 @@
 import { getLocalUser } from "./helpers/auth";
+import { setAuthorization } from "./helpers/general";
 const user=getLocalUser();
 
 export default {
@@ -52,9 +53,9 @@ export default {
                 divider:'true',
             },
             {
-                title:'Questioner',
+                title:'Kuesioner',
                 icon:'star',
-                name:'Questioner',
+                name:'Questionnaire',
             },
             {
                 divider:true,
@@ -69,7 +70,7 @@ export default {
                     {title:'Events & Promotions'},
                     {title:'Distributors'},
                     {title:'Templates'},
-                    {title:'Users',},
+                    {title:'Users',name:'Users'},
                     {title:'Reports'}
                 ]
             }
@@ -105,6 +106,7 @@ export default {
             state.loading=false;
             state.currentUser=Object.assign({},payload.user,{token:payload.access_token});
             localStorage.setItem('user',JSON.stringify(state.currentUser));
+            setAuthorization(state.currentUser.token);
         },
         loginFailed(state,payload){
             state.loading=false;

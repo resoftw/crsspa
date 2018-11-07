@@ -5,7 +5,7 @@ export function login(credentials){
             res(r.data);
         })
         .catch((err)=>{
-            rej("Invalid email or password!");
+            rej("Invalid username or password!");
         })
     })
 }

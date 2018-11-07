@@ -7,13 +7,14 @@
                 <v-container grid-list-sm>
                     <v-layout row wrap>
                         <v-flex xs12>
-                            <v-text-field label="Judul" hint="Judul Kuesioner"></v-text-field>
+                            <v-text-field label="Judul" hint="Judul Kuesioner" v-model="judul"></v-text-field>
                         </v-flex>
                         <v-flex xs12>
                         <v-textarea
                             name="input-7-1"
                             label="Deskripsi"
                             hint="Deskripsi dari Kuesioner"
+                            v-model="deskripsi"
                         ></v-textarea>
                         </v-flex>
 
@@ -138,6 +139,8 @@ export default {
             dateto:new Date().toISOString().substr(0, 10),
             cdatefrom: vm.formatDate(new Date().toISOString().substr(0, 10)),
             cdateto: vm.formatDate(new Date().toISOString().substr(0, 10)),
+            judul:'',
+            deskripsi:'',
             groups:[
                 {
                     t:'',
@@ -163,7 +166,14 @@ export default {
     methods:{
         save(){
             var vm=this;
-            axios.post('/api/quest/add',vm.groups)
+            var dat={
+                j:vm.judul,
+                d:vm.deskripsi,
+                f:vm.datefrom,
+                t:vm.dateto,
+                g:vm.groups
+            }
+            axios.post('/api/quest/add',dat)
             .then(r=>{
                 console.log(r);
             })

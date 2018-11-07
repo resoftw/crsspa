@@ -19,15 +19,20 @@
                 <v-data-table
                     :headers="headers"
                     :items="surveys"
-                    class="elevation-1"
+                    :total-items="total"
+                    :pagination.sync="pagination"
+                    :loading="loading"
+                    class="elevation-2"
                 >
                     <template slot="items" slot-scope="props">
                     <td>{{ props.item.id }}</td>
                     <td class="text-xs-left">{{ props.item.name }}</td>
                     <td class="text-xs-left">{{ props.item.description }}</td>
+                    <td class="text-xs-center">{{ props.item.start }}</td>
+                    <td class="text-xs-center">{{ props.item.end }}</td>
                     </template>
                     <template slot="pageText" slot-scope="props">
-                    Lignes {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
+                    {{ props.pageStart }} - {{ props.pageStop }} dari {{ props.itemsLength }}
                     </template>
                 </v-data-table>                
             </v-card>
@@ -144,19 +149,34 @@ export default {
             cdatefrom: vm.formatDate(new Date().toISOString().substr(0, 10)),
             cdateto: vm.formatDate(new Date().toISOString().substr(0, 10)),
             search:'',
+            loading:false,
+            pagination:{},
+            total:0,
+            _sto:null,
             headers:[
                 {text:'ID',align:'left',sortable:true,value:'id',width:'80px'},
-                {text:'Judul',align:'left',sortable:true,value:'name'},
-                {text:'Deskripsi',align:'left',sortable:true,value:'description'},
+                {text:'Judul',align:'left',sortable:true,value:'name',width:'300px'},
+                {text:'Deskripsi',align:'left',sortable:true,value:'description',width:'400px'},
+                {text:'Mulai',align:'center',sortable:true,value:'start',width:'220px'},
+                {text:'Akhir',align:'center',sortable:true,value:'end',width:'220px'},
             ],
             surveys:[
-                {id:1,name:'Survey 1',description:'Description 1'},
-                {id:2,name:'Survey 2',description:'Description 2'},
-                {id:3,name:'Survey 3',description:'Description 3'},
             ],
     }),
-
+    mounted(){
+        //this.loadData();
+    },
     watch: {
+        pagination(){
+            this.loadData();
+        },
+        search(){
+            var vm=this;
+            if (vm._sto)clearTimeout(vm._sto);
+            vm._sto=setTimeout(function(){
+                vm.loadData();
+            },400);
+        },
         datefrom (val) {
         this.cdatefrom = this.formatDate(val)
         },
@@ -164,8 +184,37 @@ export default {
         this.cdateto = this.formatDate(val)
         },
     },
-
+//array ([descending] => false 
+//  [page] => 1
+    //     [rowsPerPage] => 5
+    //     [sortBy] => id
+    //     [totalItems] => 0)
     methods:{
+        loadData()
+        {
+            var vm=this;
+            var prm={
+                page:vm.pagination.page,
+                per_page:vm.pagination.rowsPerPage,
+                sort:vm.pagination.sortBy,
+                desc:vm.pagination.descending,
+                q:vm.search,
+            }
+            vm.loading=true;
+            axios.get('/api/quest',{params:prm})
+            .then(r=>{
+                //console.log(r.data);
+                vm.pagination.page=r.data.current_page;
+                vm.total=r.data.total;
+                //vm.pagination.rowsPerPage=r.data.per_page;
+                vm.surveys=r.data.data;
+                vm.loading=false;
+            })
+            .catch(r=>{
+                console.error(r);
+                vm.loading=false;
+            });
+        },
         formatDate (date) {
             if (!date) return null
 
