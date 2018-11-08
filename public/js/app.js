@@ -66302,7 +66302,7 @@ var render = function() {
                       {
                         attrs: {
                           src:
-                            "https://picsum.photos/200/300?image=" +
+                            "https://picsum.photos/640/480?image=" +
                             _vm.getImage(),
                           height: "300px"
                         }
@@ -71086,6 +71086,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -71094,9 +71128,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             users: [],
             total: 0,
             search: '',
-            showdialog: false,
             pagination: {},
-            loading: false
+            loading: false,
+            dialog: false,
+            dialogTitle: 'Tambah User'
         };
     },
     mounted: function mounted() {
@@ -71112,6 +71147,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (r) {
                 console.error(r);
             });
+        },
+        showdialog: function showdialog() {
+            this.dialog = true;
+        },
+        saveUser: function saveUser() {
+            this.dialog = false;
         }
     }
 });
@@ -71225,22 +71266,6 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "v-flex",
-            { attrs: { sm12: "" } },
-            [
-              _c(
-                "v-btn",
-                {
-                  staticClass: "ml-0",
-                  attrs: { color: "primary", to: "Questionnaire/Create" }
-                },
-                [_vm._v("Daftarkan User")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
             "v-btn",
             {
               attrs: {
@@ -71249,12 +71274,118 @@ var render = function() {
                 right: "",
                 color: "pink",
                 dark: "",
-                fixed: "",
-                disabled: ""
+                fixed: ""
               },
               on: { click: _vm.showdialog }
             },
             [_c("v-icon", [_vm._v("add")])],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { width: "800px" },
+              model: {
+                value: _vm.dialog,
+                callback: function($$v) {
+                  _vm.dialog = $$v
+                },
+                expression: "dialog"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-title",
+                    { staticClass: "grey lighten-4 py-4 title" },
+                    [
+                      _vm._v(
+                        "\r\n        " +
+                          _vm._s(_vm.dialogTitle) +
+                          "\r\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-container",
+                    { staticClass: "pa-4", attrs: { "grid-list-sm": "" } },
+                    [
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Judul",
+                                  hint: "Judul Kuesioner"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "" } },
+                            [
+                              _c("v-textarea", {
+                                attrs: {
+                                  name: "input-7-1",
+                                  label: "Deskripsi",
+                                  hint: "Deskripsi dari Kuesioner"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "primary" },
+                          on: { click: _vm.saveUser }
+                        },
+                        [_vm._v("Simpan")]
+                      ),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { flat: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialog = false
+                            }
+                          }
+                        },
+                        [_vm._v("Cancel")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
             1
           )
         ],

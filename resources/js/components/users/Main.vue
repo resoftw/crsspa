@@ -35,9 +35,9 @@
                 </v-data-table>                
             </v-card>
         </v-flex>
-        <v-flex sm12>
-            <v-btn color="primary" class='ml-0' to="Questionnaire/Create">Daftarkan User</v-btn>
-        </v-flex>
+        <!-- <v-flex sm12>
+            <v-btn color="primary" class='ml-0' to="Users/Create">Daftarkan User</v-btn>
+        </v-flex> -->
     <v-btn
     fab
     bottom
@@ -45,11 +45,45 @@
     color="pink"
     dark
     fixed
-    disabled
     @click="showdialog"
     >
     <v-icon>add</v-icon>
     </v-btn>
+
+    <v-dialog v-model="dialog" width="800px">
+    <v-card>
+        <v-card-title
+        class="grey lighten-4 py-4 title"
+        >
+        {{dialogTitle}}
+        </v-card-title>
+        <v-container grid-list-sm class="pa-4">
+        <v-layout row wrap>
+            <v-flex xs12>
+                <v-text-field 
+                    label="Judul"
+                    hint="Judul Kuesioner"
+                ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+            <v-textarea
+                name="input-7-1"
+                label="Deskripsi"
+                hint="Deskripsi dari Kuesioner"
+            ></v-textarea>
+            </v-flex>
+
+        </v-layout>
+        </v-container>
+        <v-card-actions>
+        <v-btn color='primary' @click="saveUser">Simpan</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn flat @click="dialog = false">Cancel</v-btn>
+        </v-card-actions>
+    </v-card>
+    </v-dialog>
+
+
     </v-layout>
 </v-container>
     
@@ -66,9 +100,10 @@ export default {
             users:[],
             total:0,
             search:'',
-            showdialog:false,
             pagination:{},
             loading:false,
+            dialog:false,
+            dialogTitle:'Tambah User',
         }
     },
     mounted(){
@@ -85,6 +120,14 @@ export default {
             .catch(r=>{
                 console.error(r);
             })
+        },
+        showdialog()
+        {
+            this.dialog = true;
+        },
+        saveUser()
+        {
+            this.dialog=false;
         }
     },
 }

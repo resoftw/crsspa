@@ -11,7 +11,7 @@
         >
           <v-card>
             <v-img
-              :src="`https://picsum.photos/200/300?image=${getImage()}`"
+              :src="`https://picsum.photos/640/480?image=${getImage()}`"
               height="300px"
             >
               <span

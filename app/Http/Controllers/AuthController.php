@@ -15,7 +15,7 @@ class AuthController extends Controller
 
  
     protected $username = 'username';
-    
+
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
