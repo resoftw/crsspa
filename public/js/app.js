@@ -12525,7 +12525,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuet
             sideToolbar: {},
             sideNav: 'primary',
             //            mainNav: 'primary lighten-1',
-            mainNav: 'red darken-4',
+            mainNav: 'blue darken-4',
             bodyBg: '',
             dark: true
         }
@@ -70982,17 +70982,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(108)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(106)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(110)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-7669e20b"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -71030,6 +71034,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -71158,7 +71165,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 107 */
+/* 107 */,
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(109);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("8042a450", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7669e20b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7669e20b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71184,7 +71232,7 @@ var render = function() {
                 [
                   _c(
                     "v-toolbar",
-                    { attrs: { card: "", color: "white" } },
+                    { attrs: { card: "", color: "grey lighten-1" } },
                     [
                       _c("v-text-field", {
                         staticClass: "hidden-sm-and-down",
@@ -71209,55 +71257,69 @@ var render = function() {
                   _vm._v(" "),
                   _c("v-divider"),
                   _vm._v(" "),
-                  _c("v-data-table", {
-                    staticClass: "elevation-2",
-                    attrs: {
-                      headers: _vm.headers,
-                      items: _vm.users,
-                      "total-items": _vm.total,
-                      pagination: _vm.pagination,
-                      loading: _vm.loading
-                    },
-                    on: {
-                      "update:pagination": function($event) {
-                        _vm.pagination = $event
-                      }
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "items",
-                        fn: function(props) {
-                          return [
-                            _c("td", [_vm._v(_vm._s(props.item.id))]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "text-xs-left" }, [
-                              _vm._v(_vm._s(props.item.name))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "text-xs-left" }, [
-                              _vm._v(_vm._s(props.item.email))
-                            ])
-                          ]
+                  _c(
+                    "v-data-table",
+                    {
+                      staticClass: "elevation-2",
+                      attrs: {
+                        headers: _vm.headers,
+                        items: _vm.users,
+                        "total-items": _vm.total,
+                        pagination: _vm.pagination,
+                        loading: _vm.loading
+                      },
+                      on: {
+                        "update:pagination": function($event) {
+                          _vm.pagination = $event
                         }
                       },
-                      {
-                        key: "pageText",
-                        fn: function(props) {
-                          return [
-                            _vm._v(
-                              "\r\n                    " +
-                                _vm._s(props.pageStart) +
-                                " - " +
-                                _vm._s(props.pageStop) +
-                                " dari " +
-                                _vm._s(props.itemsLength) +
-                                "\r\n                    "
-                            )
-                          ]
+                      scopedSlots: _vm._u([
+                        {
+                          key: "items",
+                          fn: function(props) {
+                            return [
+                              _c("td", [_vm._v(_vm._s(props.item.id))]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-left" }, [
+                                _vm._v(_vm._s(props.item.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-left" }, [
+                                _vm._v(_vm._s(props.item.email))
+                              ])
+                            ]
+                          }
+                        },
+                        {
+                          key: "pageText",
+                          fn: function(props) {
+                            return [
+                              _vm._v(
+                                "\r\n                    " +
+                                  _vm._s(props.pageStart) +
+                                  " - " +
+                                  _vm._s(props.pageStop) +
+                                  " dari " +
+                                  _vm._s(props.itemsLength) +
+                                  "\r\n                    "
+                              )
+                            ]
+                          }
                         }
-                      }
-                    ])
-                  })
+                      ])
+                    },
+                    [
+                      _c("v-progress-linear", {
+                        attrs: {
+                          slot: "progress",
+                          color: "blue",
+                          indeterminate: ""
+                        },
+                        slot: "progress"
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )

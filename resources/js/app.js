@@ -28,7 +28,7 @@ Vue.use(Vuetify, {
             sideToolbar: {},
             sideNav: 'primary',
 //            mainNav: 'primary lighten-1',
-            mainNav: 'red darken-4',
+            mainNav: 'blue darken-4',
             bodyBg: '',
             dark:true,
         }

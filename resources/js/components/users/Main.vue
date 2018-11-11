@@ -6,7 +6,7 @@
         </v-flex>
         <v-flex lg12>
             <v-card>
-                <v-toolbar card color='white'>
+                <v-toolbar card color='grey lighten-1'>
                     <v-text-field
                         flat solo
                         prepend-icon="search"
@@ -24,6 +24,7 @@
                     :loading="loading"
                     class="elevation-2"
                 >
+                    <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
                     <template slot="items" slot-scope="props">
                     <td>{{ props.item.id }}</td>
                     <td class="text-xs-left">{{ props.item.name }}</td>
@@ -88,6 +89,8 @@
 </v-container>
     
 </template>
+<style scoped>
+</style>
 <script>
 export default {
     data(){
