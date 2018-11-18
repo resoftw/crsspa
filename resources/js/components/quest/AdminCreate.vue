@@ -72,8 +72,7 @@
             </v-card>
             <v-card class='mt-2' v-for="(g,i) in groups" :key="i" color="#f0f0f0">
                 <v-card-title class='py-1 title'>
-                    Group {{i+1}}
-                    <v-spacer></v-spacer>
+                    Group {{i+1}}<v-spacer></v-spacer>
                     <v-btn fab small @click="addgroup"><v-icon>add</v-icon></v-btn>
                     <v-btn fab small @click="movegroupup(i)" :disabled="i<=0"><v-icon>expand_less</v-icon></v-btn>
                     <v-btn fab small @click="movegroupdn(i)" :disabled="i>=groups.length-1"><v-icon>expand_more</v-icon></v-btn>

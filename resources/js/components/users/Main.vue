@@ -29,6 +29,10 @@
                     <td>{{ props.item.id }}</td>
                     <td class="text-xs-left">{{ props.item.name }}</td>
                     <td class="text-xs-left">{{ props.item.email }}</td>
+                    <td class="text-xs-center">
+                        <v-btn small flat icon color='green' @click="edit(props.item)"><v-icon>edit</v-icon></v-btn>
+                        <v-btn small flat icon color='red'><v-icon>delete</v-icon></v-btn>
+                    </td>
                     </template>
                     <template slot="pageText" slot-scope="props">
                     {{ props.pageStart }} - {{ props.pageStop }} dari {{ props.itemsLength }}
@@ -98,7 +102,8 @@ export default {
             headers:[
                 {text:'ID',value:'id'},
                 {text:'Nama',value:'name'},
-                {text:'Email',value:'email'}
+                {text:'Email',value:'email'},
+                {text:'Action',value:null}
             ],
             users:[],
             total:0,
@@ -127,6 +132,10 @@ export default {
         showdialog()
         {
             this.dialog = true;
+        },
+        edit(it)
+        {
+            console.log(it);
         },
         saveUser()
         {
