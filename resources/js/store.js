@@ -93,7 +93,7 @@ export default {
         },
         mainMenu(state){
             return state.mainmenu;
-        }
+        },
     },
     mutations: {
         login(state){

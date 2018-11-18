@@ -34,4 +34,5 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::post('quest/add', 'SurveyController@add');
     Route::get('quest','SurveyController@list');
     Route::get('users','UserController@list');
+    Route::get('roles','UserController@getroles');
 });

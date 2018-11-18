@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -18,6 +19,11 @@ class UserController extends Controller
             print_r($r);
         }
         return User::with('roles')->search($q)->sort($sort, $desc)->paginate($rpp);
+    }
+
+    public function getroles(Request $req)
+    {
+        return Role::all();
     }
 
 }

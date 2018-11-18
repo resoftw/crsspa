@@ -68542,7 +68542,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nowrap[data-v-7669e20b] {\r\n    white-space: nowrap;\n}\r\n", ""]);
 
 // exports
 
@@ -68650,25 +68650,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            headers: [{ text: 'ID', value: 'id' }, { text: 'Nama', value: 'name' }, { text: 'Email', value: 'email' }, { text: 'Action', value: null }],
+            headers: [{ text: 'ID', value: 'id' }, { text: 'Username', value: 'name' }, { text: 'Nama', value: 'name' }, { text: 'Email', value: 'email' }, { text: 'Roles', value: 'roles' }, { text: 'Action', value: null }],
             users: [],
             total: 0,
             search: '',
             pagination: {},
             loading: false,
             dialog: false,
-            dialogTitle: 'Tambah User'
+            show1: false,
+            uroles: null,
+            rols: [],
+            dialogTitle: 'Tambah User',
+            rules: {
+                required: function required(value) {
+                    return !!value || 'Required.';
+                },
+                min: function min(v) {
+                    return v && v.length >= 8 || 'Min 8 characters';
+                },
+                email: function email(value) {
+                    if (value && value.length > 0) {
+                        var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                        return pattern.test(value) || 'Invalid e-mail.';
+                    }
+                    return 'Invalid e-mail.';
+                },
+                emailMatch: function emailMatch() {
+                    return 'The email and password you entered don\'t match';
+                }
+            }
         };
+    },
+    created: function created() {
+        this.loadRoles();
     },
     mounted: function mounted() {
         this.loadData();
     },
 
     methods: {
+        loadRoles: function loadRoles() {
+            var vm = this;
+            axios.get('/api/roles').then(function (r) {
+                vm.uroles = r.data;
+                //console.log('here',r.data);
+            }).catch(function (r) {
+                console.error(r);
+            });
+        },
         loadData: function loadData() {
             var vm = this;
             axios.get('/api/users').then(function (r) {
@@ -68766,11 +68848,27 @@ var render = function() {
                               _c("td", [_vm._v(_vm._s(props.item.id))]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-xs-left" }, [
+                                _vm._v(_vm._s(props.item.username))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-left" }, [
                                 _vm._v(_vm._s(props.item.name))
                               ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-xs-left" }, [
                                 _vm._v(_vm._s(props.item.email))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-left" }, [
+                                _vm._v(
+                                  _vm._s(
+                                    props.item.roles
+                                      .map(function(a) {
+                                        return a.name
+                                      })
+                                      .join(",")
+                                  )
+                                )
                               ]),
                               _vm._v(" "),
                               _c(
@@ -68872,7 +68970,7 @@ var render = function() {
           _c(
             "v-dialog",
             {
-              attrs: { width: "800px" },
+              attrs: { width: "800" },
               model: {
                 value: _vm.dialog,
                 callback: function($$v) {
@@ -68887,7 +68985,10 @@ var render = function() {
                 [
                   _c(
                     "v-card-title",
-                    { staticClass: "grey lighten-4 py-4 title" },
+                    {
+                      staticClass: "grey lighten-4 py-4 title nowrap",
+                      attrs: { "primary-title": "" }
+                    },
                     [
                       _vm._v(
                         "\r\n        " +
@@ -68911,8 +69012,9 @@ var render = function() {
                             [
                               _c("v-text-field", {
                                 attrs: {
-                                  label: "Judul",
-                                  hint: "Judul Kuesioner"
+                                  label: "Username",
+                                  hint: "Username untuk login",
+                                  rules: [_vm.rules.required]
                                 }
                               })
                             ],
@@ -68923,11 +69025,102 @@ var render = function() {
                             "v-flex",
                             { attrs: { xs12: "" } },
                             [
-                              _c("v-textarea", {
+                              _c("v-text-field", {
                                 attrs: {
-                                  name: "input-7-1",
-                                  label: "Deskripsi",
-                                  hint: "Deskripsi dari Kuesioner"
+                                  label: "Full Name",
+                                  hint: "Full Name",
+                                  rules: [_vm.rules.required]
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Email",
+                                  hint: "Email address",
+                                  rules: [_vm.rules.email]
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  "append-icon": _vm.show1
+                                    ? "visibility_off"
+                                    : "visibility",
+                                  rules: [_vm.rules.required, _vm.rules.min],
+                                  type: _vm.show1 ? "text" : "password",
+                                  name: "input-10-1",
+                                  label: "Password",
+                                  hint: "At least 8 characters",
+                                  counter: ""
+                                },
+                                on: {
+                                  "click:append": function($event) {
+                                    _vm.show1 = !_vm.show1
+                                  }
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          !_vm.show1
+                            ? _c(
+                                "v-flex",
+                                { attrs: { xs12: "" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: [
+                                        _vm.rules.required,
+                                        _vm.rules.min
+                                      ],
+                                      type: "password",
+                                      name: "input-10-1",
+                                      label: "Confirm Password",
+                                      hint: "At least 8 characters",
+                                      counter: ""
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.uroles,
+                                  "menu-props": { maxHeight: "400" },
+                                  label: "Roles",
+                                  "item-text": "name",
+                                  "item-value": "id",
+                                  multiple: "",
+                                  hint: "User Roles",
+                                  "persistent-hint": ""
+                                },
+                                model: {
+                                  value: _vm.rols,
+                                  callback: function($$v) {
+                                    _vm.rols = $$v
+                                  },
+                                  expression: "rols"
                                 }
                               })
                             ],
@@ -69195,7 +69388,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#keep .v-navigation-drawer__border{\n     display: none;\n}\n", ""]);
+exports.push([module.i, "\n#keep .v-navigation-drawer__border{\r\n     display: none;\n}\r\n", ""]);
 
 // exports
 
@@ -69372,7 +69565,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#appDrawer{\n  overflow: hidden;\n}\n.drawer-menu--scroll {\n    height: calc(100vh - 48px);\n    overflow: auto;\n}\n\n", ""]);
+exports.push([module.i, "\n#appDrawer{\r\n  overflow: hidden;\n}\n.drawer-menu--scroll {\r\n    height: calc(100vh - 48px);\r\n    overflow: auto;\n}\r\n\r\n", ""]);
 
 // exports
 
