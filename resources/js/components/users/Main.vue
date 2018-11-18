@@ -72,6 +72,7 @@
                     label="Username"
                     hint="Username untuk login"
                     :rules="[rules.required]"
+                    v-model="frm.username"
                 ></v-text-field>
             </v-flex>
             <v-flex xs12>
@@ -79,6 +80,7 @@
                     label="Full Name"
                     hint="Full Name"
                     :rules="[rules.required]"
+                    v-model="frm.name"
                 ></v-text-field>
             </v-flex>
             <v-flex xs12>
@@ -86,6 +88,7 @@
                     label="Email"
                     hint="Email address"
                     :rules="[rules.email]"
+                    v-model="frm.email"
                 ></v-text-field>
             </v-flex>
             <v-flex xs12>
@@ -96,6 +99,7 @@
                     name="input-10-1"
                     label="Password"
                     hint="At least 8 characters"
+                    v-model="frm.password"
                     counter
                     @click:append="show1 = !show1"
                 ></v-text-field>
@@ -113,11 +117,11 @@
             <v-flex xs12>
                 <v-select
                   :items="uroles"
-                  v-model="rols"
                   :menu-props="{ maxHeight: '400' }"
                   label="Roles"
                   item-text="name"
                   item-value="id"
+                  v-model="frm.roles"
                   multiple
                   hint="User Roles"
                   persistent-hint
@@ -164,6 +168,9 @@ export default {
             dialog:false,
             show1:false,
             uroles:null,
+            frm:{
+
+            },
             rols:[],
             dialogTitle:'Tambah User',
             rules: {
@@ -204,7 +211,7 @@ export default {
             axios.get('/api/users')
             .then(r=>{
                 vm.users=r.data.data;
-                console.log(vm.users);
+                //console.log(vm.users);
             })
             .catch(r=>{
                 console.error(r);
@@ -216,7 +223,9 @@ export default {
         },
         edit(it)
         {
-            console.log(it);
+            this.frm=it;
+            this.dialog=true;
+
         },
         saveUser()
         {

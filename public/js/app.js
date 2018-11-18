@@ -68699,6 +68699,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -68712,6 +68716,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             dialog: false,
             show1: false,
             uroles: null,
+            frm: {},
             rols: [],
             dialogTitle: 'Tambah User',
             rules: {
@@ -68755,7 +68760,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             axios.get('/api/users').then(function (r) {
                 vm.users = r.data.data;
-                console.log(vm.users);
+                //console.log(vm.users);
             }).catch(function (r) {
                 console.error(r);
             });
@@ -68764,7 +68769,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dialog = true;
         },
         edit: function edit(it) {
-            console.log(it);
+            this.frm = it;
+            this.dialog = true;
         },
         saveUser: function saveUser() {
             this.dialog = false;
@@ -69015,6 +69021,13 @@ var render = function() {
                                   label: "Username",
                                   hint: "Username untuk login",
                                   rules: [_vm.rules.required]
+                                },
+                                model: {
+                                  value: _vm.frm.username,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.frm, "username", $$v)
+                                  },
+                                  expression: "frm.username"
                                 }
                               })
                             ],
@@ -69030,6 +69043,13 @@ var render = function() {
                                   label: "Full Name",
                                   hint: "Full Name",
                                   rules: [_vm.rules.required]
+                                },
+                                model: {
+                                  value: _vm.frm.name,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.frm, "name", $$v)
+                                  },
+                                  expression: "frm.name"
                                 }
                               })
                             ],
@@ -69045,6 +69065,13 @@ var render = function() {
                                   label: "Email",
                                   hint: "Email address",
                                   rules: [_vm.rules.email]
+                                },
+                                model: {
+                                  value: _vm.frm.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.frm, "email", $$v)
+                                  },
+                                  expression: "frm.email"
                                 }
                               })
                             ],
@@ -69071,6 +69098,13 @@ var render = function() {
                                   "click:append": function($event) {
                                     _vm.show1 = !_vm.show1
                                   }
+                                },
+                                model: {
+                                  value: _vm.frm.password,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.frm, "password", $$v)
+                                  },
+                                  expression: "frm.password"
                                 }
                               })
                             ],
@@ -69116,11 +69150,11 @@ var render = function() {
                                   "persistent-hint": ""
                                 },
                                 model: {
-                                  value: _vm.rols,
+                                  value: _vm.frm.roles,
                                   callback: function($$v) {
-                                    _vm.rols = $$v
+                                    _vm.$set(_vm.frm, "roles", $$v)
                                   },
-                                  expression: "rols"
+                                  expression: "frm.roles"
                                 }
                               })
                             ],
