@@ -65,9 +65,9 @@
         >
         {{dialogTitle}}
         </v-card-title>
-        <v-container grid-list-sm class="pa-4">
+        <v-container grid-list-xl class="xpa-4">
         <v-layout row wrap>
-            <v-flex xs12>
+            <v-flex xs6>
                 <v-text-field 
                     label="Username"
                     hint="Username untuk login"
@@ -75,7 +75,7 @@
                     v-model="frm.username"
                 ></v-text-field>
             </v-flex>
-            <v-flex xs12>
+            <v-flex xs6>
                 <v-text-field 
                     label="Full Name"
                     hint="Full Name"
@@ -94,7 +94,7 @@
             <v-flex xs12>
                 <v-text-field 
                     :append-icon="show1 ? 'visibility_off' : 'visibility'"
-                    :rules="[rules.required, rules.min]"
+                    :rules="[rules.pwd]"
                     :type="show1 ? 'text' : 'password'"
                     name="input-10-1"
                     label="Password"
@@ -106,7 +106,7 @@
             </v-flex>
             <v-flex xs12 v-if="!show1">
                 <v-text-field 
-                    :rules="[rules.required, rules.min]"
+                    :rules="[rules.pwd]"
                     :type="'password'"
                     name="input-10-1"
                     label="Confirm Password"
@@ -175,6 +175,11 @@ export default {
             dialogTitle:'Tambah User',
             rules: {
                 required: value => !!value || 'Required.',
+                pwd: v => {
+                    if (v){
+                        if (v.length<8)return "Min 8 characters";
+                    }
+                },
                 min: v => (v && v.length >= 8) || 'Min 8 characters',
                 email: value => {
                     if(value && value.length > 0) {
@@ -219,6 +224,7 @@ export default {
         },
         showdialog()
         {
+            this.frm={};
             this.dialog = true;
         },
         edit(it)

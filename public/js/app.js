@@ -66434,7 +66434,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -66479,15 +66479,6 @@ module.exports = function listToStyles (parentId, list) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_auth__ = __webpack_require__(13);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -66577,30 +66568,44 @@ var render = function() {
             { attrs: { xs12: "", sm8: "", md4: "", lg4: "" } },
             [
               _c(
-                "v-card",
-                { staticClass: "elevation-1 pa-3" },
+                "v-form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.login($event)
+                    }
+                  }
+                },
                 [
                   _c(
-                    "v-card-text",
+                    "v-card",
+                    { staticClass: "elevation-1 pa-3" },
                     [
-                      _c("div", { staticClass: "layout column align-center" }, [
-                        _c("img", {
-                          attrs: {
-                            src: __webpack_require__(14),
-                            alt: "Baturaja",
-                            width: "128",
-                            height: "128"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("h1", { staticClass: "flex my-4 primary--text" }, [
-                          _vm._v("Customer Relationship System")
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c(
-                        "v-form",
+                        "v-card-text",
                         [
+                          _c(
+                            "div",
+                            { staticClass: "layout column align-center" },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: __webpack_require__(14),
+                                  alt: "Baturaja",
+                                  width: "128",
+                                  height: "128"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "h1",
+                                { staticClass: "flex my-4 primary--text" },
+                                [_vm._v("Customer Relationship System")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
                           _c("v-text-field", {
                             attrs: {
                               "append-icon": "person",
@@ -66635,60 +66640,28 @@ var render = function() {
                           })
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "" } },
-                        [
-                          _c("v-icon", { attrs: { color: "blue" } }, [
-                            _vm._v("fa fa-facebook-square fa-lg")
-                          ])
-                        ],
-                        1
                       ),
                       _vm._v(" "),
                       _c(
-                        "v-btn",
-                        { attrs: { icon: "" } },
+                        "v-card-actions",
                         [
-                          _c("v-icon", { attrs: { color: "red" } }, [
-                            _vm._v("fa fa-google fa-lg")
-                          ])
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                type: "submit",
+                                block: "",
+                                color: "primary",
+                                loading: _vm.loading
+                              },
+                              on: { click: _vm.login }
+                            },
+                            [_vm._v("Login")]
+                          )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "" } },
-                        [
-                          _c("v-icon", { attrs: { color: "light-blue" } }, [
-                            _vm._v("fa fa-twitter fa-lg")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: {
-                            block: "",
-                            color: "primary",
-                            loading: _vm.loading
-                          },
-                          on: { click: _vm.login }
-                        },
-                        [_vm._v("Login")]
                       )
                     ],
                     1
@@ -68723,6 +68696,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 required: function required(value) {
                     return !!value || 'Required.';
                 },
+                pwd: function pwd(v) {
+                    if (v) {
+                        if (v.length < 8) return "Min 8 characters";
+                    }
+                },
                 min: function min(v) {
                     return v && v.length >= 8 || 'Min 8 characters';
                 },
@@ -68766,6 +68744,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         showdialog: function showdialog() {
+            this.frm = {};
             this.dialog = true;
         },
         edit: function edit(it) {
@@ -69006,7 +68985,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-container",
-                    { staticClass: "pa-4", attrs: { "grid-list-sm": "" } },
+                    { staticClass: "xpa-4", attrs: { "grid-list-xl": "" } },
                     [
                       _c(
                         "v-layout",
@@ -69014,7 +68993,7 @@ var render = function() {
                         [
                           _c(
                             "v-flex",
-                            { attrs: { xs12: "" } },
+                            { attrs: { xs6: "" } },
                             [
                               _c("v-text-field", {
                                 attrs: {
@@ -69036,7 +69015,7 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-flex",
-                            { attrs: { xs12: "" } },
+                            { attrs: { xs6: "" } },
                             [
                               _c("v-text-field", {
                                 attrs: {
@@ -69087,7 +69066,7 @@ var render = function() {
                                   "append-icon": _vm.show1
                                     ? "visibility_off"
                                     : "visibility",
-                                  rules: [_vm.rules.required, _vm.rules.min],
+                                  rules: [_vm.rules.pwd],
                                   type: _vm.show1 ? "text" : "password",
                                   name: "input-10-1",
                                   label: "Password",
@@ -69118,10 +69097,7 @@ var render = function() {
                                 [
                                   _c("v-text-field", {
                                     attrs: {
-                                      rules: [
-                                        _vm.rules.required,
-                                        _vm.rules.min
-                                      ],
+                                      rules: [_vm.rules.pwd],
                                       type: "password",
                                       name: "input-10-1",
                                       label: "Confirm Password",
@@ -69422,7 +69398,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#keep .v-navigation-drawer__border{\r\n     display: none;\n}\r\n", ""]);
+exports.push([module.i, "\n#keep .v-navigation-drawer__border{\n     display: none;\n}\n", ""]);
 
 // exports
 
@@ -69599,7 +69575,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#appDrawer{\r\n  overflow: hidden;\n}\n.drawer-menu--scroll {\r\n    height: calc(100vh - 48px);\r\n    overflow: auto;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n#appDrawer{\n  overflow: hidden;\n}\n.drawer-menu--scroll {\n    height: calc(100vh - 48px);\n    overflow: auto;\n}\n\n", ""]);
 
 // exports
 
