@@ -1,4 +1,5 @@
 require('./bootstrap');
+import swal from 'sweetalert';
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
@@ -10,6 +11,12 @@ import {initialize} from './helpers/general';
 
 import MainApp from './components/MainApp.vue';
 
+function swalplugin(Vue) {
+    Vue.prototype.$swal = Vue.$swal = swal
+}
+
+
+Vue.use(swalplugin);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(Vuetify, {

@@ -10,4 +10,13 @@
 
 @import '~vuetify/dist/vuetify.min.css';
 
-
+.swal-title,
+.swal-text,
+.swal-button,
+.swal-footer {
+    font-family: Roboto !important;
+}
+.swal-button,
+.swal-modal {
+    border-radius: 0 !important;
+}

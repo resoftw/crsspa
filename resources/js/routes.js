@@ -2,6 +2,7 @@ import Home from './components/Home.vue';
 import Login from './components/auth/Login.vue';
 import QuestMain from './components/quest/Main.vue';
 import QuestAdmin from './components/quest/Admin.vue';
+import ArticlesAdmin from './components/articles/Admin.vue';
 import QuestAdminCreate from './components/quest/AdminCreate.vue';
 import UsersMain from './components/users/Main.vue';
 export const routes = [
@@ -28,6 +29,14 @@ export const routes = [
         meta:{
             requiresAuth:true,
             breadcrumb: false,
+        }
+    },
+    {
+        path: '/Settings/Articles',
+        name:'Settings/Articles',
+        component:ArticlesAdmin,
+        meta: {
+            requiresAuth:true,
         }
     },
     {

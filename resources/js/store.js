@@ -65,6 +65,7 @@ export default {
                 icon:'settings',
                 group:'Settings',
                 items:[
+                    {title:'Articles',name:'Articles'},
                     {title:'Questioner',name:'Questionnaire'},
                     {title:'Products',name:'Products'},
                     {title:'Events & Promotions'},
