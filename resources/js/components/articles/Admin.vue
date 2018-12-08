@@ -33,7 +33,6 @@
                     <td class="text-xs-left">{{ props.item.author_name }}</td>
                     <td class='text-xs-left'>{{ props.item.tags.map(a=>a.name).join(',')}}</td>
                     <td class="text-xs-center">
-                        <v-btn small flat icon color='blue' @click="editperm(props.item)"><v-icon>speaker_notes</v-icon></v-btn>
                         <v-btn small flat icon color='green' @click="edit(props.item)"><v-icon>edit</v-icon></v-btn>
                         <v-btn small flat icon color='red' @click="del(props.item.id)"><v-icon>delete</v-icon></v-btn>
                     </td>
